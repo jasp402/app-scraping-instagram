@@ -1,0 +1,23 @@
+{
+  "name": "scraping-picture-instagram",
+  "version": "1.0.0",
+  "description": "Scraping for download images to instagram from interface.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-packager . electron-puppeteer --all --out build"
+  },
+  "author": {
+    "name": "Jesús Antonio Pérez Sandoval",
+    "email": "jasp402@gmail.com",
+    "url": "http://jasp402.com/"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "~1.7.8",
+    "electron-packager": "12.1.0"
+  },
+  "dependencies": {
+    "puppeteer": "^1.0.0"
+  }
+}
