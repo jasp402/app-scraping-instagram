@@ -1,4 +1,17 @@
 const { open } = require('./puppeteer.js');
+const ipcRenderer = require('electron').ipcRenderer;
+
+let dir = undefined;
+
+//AddEvent select Folder // get path with api electron
+document.getElementById('dirs').addEventListener('click', () => {
+  ipcRenderer.send('selectDirectory');
+});
+
+//get path as result with api electron
+ipcRenderer.on('variable-reply', function (event, args) {
+  dir = args[0];
+});
 
 document.querySelector('#btn').addEventListener('click', async () => {
   console.log('Starting...');
@@ -10,9 +23,9 @@ document.querySelector('#btn').addEventListener('click', async () => {
     console.log('-->',accounts.value);
     console.log('-->',user.value);
     console.log('-->',pass.value);
+    console.log('-->',dir);
 
-
-  await open(user.value, pass.value, accounts.value);
+  await open(user.value, pass.value, accounts.value, dir);
 
   console.log('Started');
 });

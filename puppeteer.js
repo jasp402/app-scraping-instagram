@@ -1,4 +1,6 @@
 const puppeteer = require('puppeteer');
+const jsPackTools = require('js-packtools')();
+const fs   = require('fs');
 
 let span = document.getElementById('result');
 
@@ -7,10 +9,10 @@ Array.prototype.unique=function(a){
     return function(){return this.filter(a)}}(function(a,b,c){return c.indexOf(a,b+1)<0
 });
 
-const open = async(a,b,c) => {
+const open = async(a,b,c,d) => {
     const browser = await puppeteer.launch({
         timeout : 120 * 1000,
-        headless: false
+        headless: true
     });
 
     const page        = (await browser.pages())[0];
@@ -66,7 +68,27 @@ const open = async(a,b,c) => {
             }
         }
 
-        console.log(flatArray(getImgSrcAttr));
+        const arrayCookies = await page.cookies();
+        const cookie = arrayCookies.map(x => x.name + '=' + x.value).join(';');
+        const opts = {
+            method : "GET",
+            headers: {
+                'Cookie': cookie
+            },
+        };
+        let dir = d + '/' + arAccounts[index] + '/';
+        console.log(dir);
+        jsPackTools.validateDir(dir);
+
+        getImgSrcAttr[index].map(async (imgUrl, i) => {
+            return await fetch(imgUrl, opts)
+                .then(res => res.arrayBuffer())
+                .then(response => {
+                    console.log('---save');
+                    fs.writeFileSync(dir + i + '.jpg', Buffer.from(response));
+                })
+                .catch(console.error);
+        });
     }
 
 

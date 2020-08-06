@@ -1,4 +1,7 @@
-const electron = require('electron')
+const electron = require('electron');
+const ipcMain = electron.ipcMain;
+const dailog = electron.dialog;
+
 // Module to control application life.
 const app = electron.app
 // Module to create native browser window.
@@ -58,3 +61,12 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+// code. You can also put them in separate files and require them here.
+let dir;
+
+ipcMain.on('selectDirectory', function(event, arg) {
+  dir = dailog.showOpenDialog(mainWindow, {
+    properties: ['openDirectory']
+  });
+  event.sender.send('variable-reply', dir);
+});
