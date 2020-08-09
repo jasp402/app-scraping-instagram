@@ -48,7 +48,7 @@
             <img
                     class="h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 object-cover"
                     src="https://appzzang.me/data/editor/1608/f9c387cb6bd7a0b004f975cd92cbe2d9_1471626325_6802.png"
-                    alt="enoshima profile" />
+                    alt="enoshima profile"/>
             <div class="text-center md:text-left pl-2 mt-4">
                 <h2 class="text-lg">Unnamed</h2>
                 <div class="text-purple-500">Admin</div>
@@ -58,7 +58,7 @@
         <ul class="mt-2 text-gray-600">
             <!-- Links -->
             <li      onclick="openModal()"
-                    class="mt-8 shadow py-2 text-white
+                class="mt-8 shadow py-2 text-white
 			dark:text-gray-200 bg-green-400 dark:bg-green-500 rounded-lg shadow
 				-ml-4">
                 <a href="#home" class="flex pl-4">
@@ -97,9 +97,10 @@
 							9v2h-4v-2h4m2-2h-8v6h8v-6z"></path>
                     </svg>
                     <span
+                            id="path"
                             class="ml-2 capitalize font-medium text-black
 						dark:text-gray-300">
-						tasks
+						Select Folder
 					</span>
                 </a>
             </li>
@@ -177,7 +178,7 @@
 
                     <input
                             class="w-12 bg-transparent focus:outline-none"
-                            placeholder="Search" />
+                            placeholder="Search"/>
 
                 </div>
 
@@ -320,7 +321,7 @@
 
     </main>
 
-    <!-- main modal -->
+    <!-- main account -->
     <div class="main-modal fixed w-full h-100 inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster"
          style="background: rgba(0,0,0,.7);">
         <div
@@ -328,7 +329,7 @@
             <div class="modal-content py-4 text-left px-6">
                 <!--Title-->
                 <div class="flex justify-between items-center pb-3">
-                    <p class="text-2xl font-bold">Header</p>
+                    <p class="text-2xl font-bold">Set Account</p>
                     <div class="modal-close cursor-pointer z-50">
                         <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                              viewBox="0 0 18 18">
@@ -365,7 +366,7 @@
             modal.classList.remove('fadeIn');
             modal.classList.add('fadeOut');
             setTimeout(() => {
-                modal.style.display = 'none';
+            modal.style.display = 'none';
             }, 500);
         }
 

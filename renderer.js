@@ -10,7 +10,9 @@ document.getElementById('dirs').addEventListener('click', () => {
 
 //get path as result with api electron
 ipcRenderer.on('variable-reply', function (event, args) {
-  dir = args[0];
+  dir = args ? args[0] : dir;
+    let path  = document.getElementById('path');
+    path.innerText = '.../'+dir.split('\\').pop();
 });
 
 document.querySelector('#btn').addEventListener('click', async () => {
