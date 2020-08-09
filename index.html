@@ -14,7 +14,7 @@
         <div class="flex flex-row border-b items-center justify-between pb-2">
             <!-- Hearder -->
             <span class="text-lg font-semibold capitalize dark:text-gray-300">
-				my admin
+				SBP-Instagram
 			</span>
 
             <span class="relative ">
@@ -43,75 +43,23 @@
 
         </div>
 
-        <div class="mt-8">
+        <div class="mt-8 md:flex">
             <!-- User info -->
             <img
-                    class="h-12 w-12 rounded-full object-cover"
+                    class="h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 object-cover"
                     src="https://appzzang.me/data/editor/1608/f9c387cb6bd7a0b004f975cd92cbe2d9_1471626325_6802.png"
                     alt="enoshima profile" />
-            <h2
-                    class="mt-4 text-xl dark:text-gray-300 font-extrabold capitalize">
-                Hello Enoshima
-            </h2>
-            <span class="text-sm dark:text-gray-300">
-				<span class="font-semibold text-green-600 dark:text-green-300">
-					Admin
-				</span>
-				id789038
-			</span>
+            <div class="text-center md:text-left pl-2 mt-4">
+                <h2 class="text-lg">Unnamed</h2>
+                <div class="text-purple-500">Admin</div>
+                <div class="text-gray-600">id789038</div>
+            </div>
         </div>
-
-        <button
-                onclick="openModal()"
-                class="mt-8 flex items-center justify-between py-3 px-2 text-white
-			dark:text-gray-200 bg-green-400 dark:bg-green-500 rounded-lg shadow">
-            <!-- Action -->
-            <span>Add user</span>
-            <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24">
-                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
-            </svg>
-        </button>
-
         <ul class="mt-2 text-gray-600">
             <!-- Links -->
-            <li class="mt-8">
-                <a href="#home" class="flex ">
-                    <svg
-                            class="fill-current h-5 w-5 dark:text-gray-300"
-                            viewBox="0 0 24 24">
-                        <path
-                                d="M16 20h4v-4h-4m0-2h4v-4h-4m-6-2h4V4h-4m6
-							4h4V4h-4m-6 10h4v-4h-4m-6 4h4v-4H4m0 10h4v-4H4m6
-							4h4v-4h-4M4 8h4V4H4v4z"></path>
-                    </svg>
-                    <span
-                            class="ml-2 capitalize font-medium text-black
-						dark:text-gray-300">
-						dashboard
-					</span>
-                </a>
-            </li>
-
-            <li class="mt-8">
-                <a href="#home" class="flex">
-                    <svg
-                            class="fill-current h-5 w-5 dark:text-gray-300"
-                            viewBox="0 0 24 24">
-                        <path
-                                d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2
-							2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0
-							00-2-2h-1V1m-1 11h-5v5h5v-5z"></path>
-                    </svg>
-                    <span
-                            class="ml-2 capitalize font-medium text-black
-						dark:text-gray-300">
-						calendar
-					</span>
-                </a>
-            </li>
-
-            <li
-                    class="mt-8 shadow py-2 bg-white dark:bg-gray-200 rounded-lg
+            <li      onclick="openModal()"
+                    class="mt-8 shadow py-2 text-white
+			dark:text-gray-200 bg-green-400 dark:bg-green-500 rounded-lg shadow
 				-ml-4">
                 <a href="#home" class="flex pl-4">
                     <svg class="fill-current h-5 w-5" viewBox="0 0 24 24">
@@ -120,12 +68,26 @@
 							014-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4
 							8-4z"></path>
                     </svg>
-                    <span class="ml-2 capitalize font-medium">users</span>
+                    <span class="ml-2 capitalize font-medium">Add Account</span>
+                    <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24">
+                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+                    </svg>
                 </a>
             </li>
 
-            <li class="mt-8">
-                <a href="#home" class="flex" id="dirs" webkitdirectory>
+            <li
+                    class="mt-8 shadow py-2 bg-white dark:bg-gray-200 rounded-lg
+				-ml-4">
+                <a href="#home" class="flex pl-4">
+                    <svg class="fill-current h-5 w-5" viewBox="0 0 24 24">
+                        <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/>
+                    </svg>
+                    <span class="ml-2 capitalize font-medium">login</span>
+                </a>
+            </li>
+
+            <li class="mt-8" id="dirs" webkitdirectory>
+                <a href="#home" class="flex">
                     <svg
                             class="fill-current h-5 w-5 dark:text-gray-300"
                             viewBox="0 0 24 24">
@@ -161,7 +123,7 @@
     <main
             class="flex-1 flex flex-col bg-gray-100 dark:bg-gray-700 transition
 		duration-500 ease-in-out overflow-y-auto">
-        <div class="mx-10 my-2">
+        <div class="mx-10 my-2" id="wrapCard">
             <nav
                     class="flex flex-row justify-between border-b
 				dark:border-gray-600 dark:text-gray-400 transition duration-500
@@ -221,7 +183,7 @@
 
             </nav>
             <h2 class="my-4 text-4xl font-semibold dark:text-gray-400">
-                User list
+                Accounts
             </h2>
             <div
                     class="pb-2 flex items-center justify-between text-gray-600
@@ -354,349 +316,6 @@
                 </div>
 
             </div>
-            <div
-                    class="mt-2 flex px-4 py-4 justify-between bg-white
-				dark:bg-gray-600 shadow-xl rounded-lg cursor-pointer ">
-                <!-- Card -->
-
-                <div class="flex justify-between">
-                    <!-- Left side -->
-
-                    <img
-                            class="h-12 w-12 rounded-full object-cover"
-                            src="https://inews.gtimg.com/newsapp_match/0/8693739867/0"
-                            alt="" />
-
-                    <div
-                            class="ml-4 flex flex-col capitalize text-gray-600
-						dark:text-gray-400">
-                        <span>name</span>
-                        <span class="mt-2 text-black dark:text-gray-200">
-							carmen beltran
-						</span>
-                    </div>
-
-                    <div
-                            class="ml-12 flex flex-col capitalize text-gray-600
-						dark:text-gray-400">
-                        <span>login</span>
-                        <span class="mt-2 text-black dark:text-gray-200">
-							carmen.bel
-						</span>
-
-                    </div>
-
-                </div>
-
-                <div class="flex">
-                    <!-- Rigt side -->
-
-                    <div
-                            class="mr-16 flex flex-col capitalize text-gray-600
-						dark:text-gray-400">
-                        <span>project</span>
-                        <span class="mt-2 text-black dark:text-gray-200">
-							Aero treck
-						</span>
-                        <span class="text-red-600 dark:text-red-400">
-							search
-						</span>
-                        <span>2 more...</span>
-                    </div>
-
-                    <div
-                            class="mr-16 flex flex-col capitalize text-gray-600
-						dark:text-gray-400">
-                        <span>role</span>
-                        <span class="mt-2 text-black dark:text-gray-200">
-							Designer
-						</span>
-                        <span class="text-red-600 dark:text-red-400">
-							Designer
-						</span>
-                    </div>
-
-                    <div
-                            class="mr-16 flex flex-col capitalize text-gray-600
-						dark:text-gray-400">
-                        <span>status</span>
-                        <span class="mt-2 text-black dark:text-gray-200">
-							None
-						</span>
-                        <span class="text-red-600 dark:text-red-400">
-							in work
-						</span>
-                    </div>
-
-                    <div
-                            class="mr-8 flex flex-col capitalize text-gray-600
-						dark:text-gray-400">
-                        <span>final date</span>
-                        <span class="mt-2 text-green-400 dark:text-green-200">
-							20.02.2020
-						</span>
-                        <span class="text-red-600 dark:text-red-400">
-							07.02.2020 11:00
-						</span>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div
-                    class="mt-8 flex px-4 py-4 justify-between bg-white
-				dark:bg-gray-600 shadow-xl rounded-lg cursor-pointer">
-                <!-- Card -->
-
-                <div class="flex justify-between">
-                    <!-- Left side -->
-
-                    <img
-                            class="h-12 w-12 rounded-full object-cover"
-                            src="https://appzzang.me/data/editor/1608/f9c387cb6bd7a0b004f975cd92cbe2d9_1471626325_6802.png"
-                            alt="" />
-
-                    <div
-                            class="ml-4 flex flex-col capitalize text-gray-600
-						dark:text-gray-400">
-                        <span>name</span>
-                        <span class="mt-2 text-black dark:text-gray-200">
-							enoshima junko
-						</span>
-                    </div>
-
-                    <div
-                            class="ml-12 flex flex-col capitalize text-gray-600
-						dark:text-gray-400">
-                        <span>login</span>
-                        <span class="mt-2 text-black dark:text-gray-200">
-							zetsbuo
-						</span>
-
-                    </div>
-
-                </div>
-
-                <div class="flex">
-                    <!-- Rigt side -->
-
-                    <div
-                            class="mr-16 flex flex-col capitalize text-gray-600
-						dark:text-gray-400">
-                        <span>project</span>
-                        <span class="mt-2 text-black dark:text-gray-200">
-							Aero treck
-						</span>
-                    </div>
-
-                    <div
-                            class="mr-16 flex flex-col capitalize text-gray-600
-						dark:text-gray-400">
-                        <span>role</span>
-                        <span class="mt-2 text-black dark:text-gray-200">
-							Front-End
-						</span>
-                    </div>
-
-                    <div
-                            class="mr-16 flex flex-col capitalize text-gray-600
-						dark:text-gray-400">
-                        <span>status</span>
-                        <span class="mt-2 text-yellow-600 dark:text-yellow-400">
-							in work
-						</span>
-                    </div>
-
-                    <div
-                            class="mr-8 flex flex-col capitalize text-gray-600
-						dark:text-gray-400">
-                        <span>final date</span>
-                        <span class="mt-2 text-green-400 dark:text-green-200">
-							20.02.2020 11:00
-						</span>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div
-                    class="mt-8 flex px-4 py-4 justify-between bg-white
-				dark:bg-gray-600 shadow-xl rounded-lg cursor-pointer">
-                <!-- Card -->
-
-                <div class="flex justify-between">
-                    <!-- Left side -->
-
-                    <img
-                            class="h-12 w-12 rounded-full object-cover"
-                            src="https://www.hdwallpapers.in/download/2012_darksiders_ii-1920x1080.jpg"
-                            alt="" />
-
-                    <div
-                            class="ml-4 flex flex-col capitalize text-gray-600
-						dark:text-gray-400">
-                        <span>name</span>
-                        <span class="mt-2 text-black dark:text-gray-200">
-							dark siders
-						</span>
-                    </div>
-
-                    <div
-                            class="ml-12 flex flex-col capitalize text-gray-600
-						dark:text-gray-400">
-                        <span>login</span>
-                        <span class="mt-2 text-black dark:text-gray-200">
-							dark siders
-						</span>
-
-                    </div>
-
-                </div>
-
-                <div class="flex">
-                    <!-- Rigt side -->
-
-                    <div
-                            class="mr-16 flex flex-col capitalize text-gray-600
-						dark:text-gray-400">
-                        <span>project</span>
-                        <span class="mt-2 text-black dark:text-gray-200">
-							Aero treck
-						</span>
-                        <span class="text-black dark:text-gray-200">
-							Grass Max
-						</span>
-                        <span class="text-black dark:text-gray-200">Mental</span>
-                    </div>
-
-                    <div
-                            class="mr-16 flex flex-col capitalize text-gray-600
-						dark:text-gray-400">
-                        <span>role</span>
-                        <span class="mt-2 text-black dark:text-gray-200">
-							designer
-						</span>
-                        <span class="text-black dark:text-gray-200">
-							designer
-						</span>
-                        <span class="text-black dark:text-gray-200">
-							illustrator
-						</span>
-                    </div>
-
-                    <div
-                            class="mr-16 flex flex-col capitalize text-gray-600
-						dark:text-gray-400">
-                        <span>status</span>
-                        <span class="mt-2 text-green-400 dark:text-green-200">
-							on check
-						</span>
-                        <span class="mt-2 text-yellow-600 dark:text-yellow-400">
-							in work
-						</span>
-                        <span class="mt-2 text-black dark:text-gray-200">
-							none
-						</span>
-                    </div>
-
-                    <div
-                            class="mr-8 flex flex-col capitalize text-gray-600
-						dark:text-gray-400">
-                        <span>final date</span>
-                        <span class="mt-2 text-green-400 dark:text-green-200">
-							20.02.2020 11:00
-						</span>
-                        <span class="mt-2 text-yellow-600 dark:text-yellow-400">
-							20.02.2020 13:00
-						</span>
-                        <span class="mt-2 text-green-400 dark:text-green-200">
-							20.02.2020 11:00
-						</span>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div
-                    class="mt-8 mb-4 flex px-4 py-4 justify-between bg-white
-				dark:bg-gray-600 shadow-xl rounded-lg cursor-pointer">
-                <!-- Card -->
-
-                <div class="flex justify-between">
-                    <!-- Left side -->
-
-                    <img
-                            class="h-12 w-12 rounded-full object-cover"
-                            src="https://media.contentapi.ea.com/content/dam/gin/images/2017/01/crysis-3-keyart.jpg.adapt.crop1x1.767p.jpg"
-                            alt="" />
-
-                    <div
-                            class="ml-4 flex flex-col capitalize text-gray-600
-						dark:text-gray-400">
-                        <span>name</span>
-                        <span class="mt-2 text-black dark:text-gray-200">
-							crysis
-						</span>
-                    </div>
-
-                    <div
-                            class="ml-12 flex flex-col capitalize text-gray-600
-						dark:text-gray-400">
-                        <span>login</span>
-                        <span class="mt-2 text-black dark:text-gray-200">
-							crysis
-						</span>
-
-                    </div>
-
-                </div>
-
-                <div class="flex">
-                    <!-- Rigt side -->
-
-                    <div
-                            class="mr-16 flex flex-col capitalize text-gray-600
-						dark:text-gray-400">
-                        <span>project</span>
-                        <span class="mt-2 text-black dark:text-gray-200">
-							Killing
-						</span>
-                    </div>
-
-                    <div
-                            class="mr-16 flex flex-col capitalize text-gray-600
-						dark:text-gray-400">
-                        <span>role</span>
-                        <span class="mt-2 text-black dark:text-gray-200">
-							hunter
-						</span>
-                    </div>
-
-                    <div
-                            class="mr-16 flex flex-col capitalize text-gray-600
-						dark:text-gray-400">
-                        <span>status</span>
-                        <span class="mt-2 text-yellow-600 dark:text-yellow-400">
-							in work
-						</span>
-                    </div>
-
-                    <div
-                            class="mr-8 flex flex-col capitalize text-gray-600
-						dark:text-gray-400">
-                        <span>final date</span>
-                        <span class="mt-2 text-green-400 dark:text-green-200">
-							20.02.2020 11:00
-						</span>
-                    </div>
-
-                </div>
-
-            </div>
-
         </div>
 
     </main>
@@ -730,7 +349,7 @@
                     <button
                             class="focus:outline-none modal-close px-4 bg-gray-400 p-3 rounded-lg text-black hover:bg-gray-300">Cancel</button>
                     <button
-                            class="focus:outline-none px-4 bg-teal-500 p-3 ml-3 rounded-lg text-white hover:bg-teal-400" id="btn">Confirm</button>
+                            class="focus:outline-none modal-close px-4 bg-teal-500 p-3 ml-3 rounded-lg text-white hover:bg-teal-400" id="btn">Confirm</button>
                 </div>
             </div>
         </div>
