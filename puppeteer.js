@@ -3,64 +3,7 @@ const jsPackTools = require('js-packtools')();
 const fs   = require('fs');
 
 //arg[0] - account name
-const templateAccountCard = (...arg) => `<div
-                    class="mt-8 flex px-4 py-4 justify-between bg-whitedark:bg-gray-600 shadow-xl rounded-lg cursor-pointer">
-                <!-- Card -->
 
-                <div class="flex justify-between">
-                    <!-- Left side -->
-
-                    <img
-                            class="h-12 w-12 rounded-full object-cover"
-                            src="https://appzzang.me/data/editor/1608/f9c387cb6bd7a0b004f975cd92cbe2d9_1471626325_6802.png"
-                            alt="" />
-
-                    <div
-                            class="ml-4 flex flex-col capitalize text-gray-600dark:text-gray-400">
-                        <span>Account</span>
-                        <span class="mt-2 text-black dark:text-gray-200">${arg[0]}</span>
-                    </div>
-
-                    <div
-                            class="ml-12 flex flex-col capitalize text-gray-600dark:text-gray-400">
-                        <span>login</span>
-                        <span class="mt-2 text-black dark:text-gray-200">zetsbuo</span>
-
-                    </div>
-
-                </div>
-
-                <div class="flex">
-                    <!-- Rigt side -->
-
-                    <div
-                            class="mr-16 flex flex-col capitalize text-gray-600dark:text-gray-400">
-                        <span>project</span>
-                        <span class="mt-2 text-black dark:text-gray-200">Aero treck</span>
-                    </div>
-
-                    <div
-                            class="mr-16 flex flex-col capitalize text-gray-600dark:text-gray-400">
-                        <span>role</span>
-                        <span class="mt-2 text-black dark:text-gray-200">Front-End</span>
-                    </div>
-
-                    <div
-                            class="mr-16 flex flex-col capitalize text-gray-600dark:text-gray-400">
-                        <span>status</span>
-                        <span class="mt-2 text-yellow-600 dark:text-yellow-400">in work</span>
-                    </div>
-
-                    <div
-                            class="mr-8 flex flex-col capitalize text-gray-600dark:text-gray-400">
-                        <span>final date</span>
-                        <span class="mt-2 text-green-400 dark:text-green-200">20.02.2020 11:00</span>
-                    </div>
-
-                </div>
-
-            </div>`;
-let wrapCard = document.getElementById('wrapCard');
 
 
 Array.prototype.unique=function(a){
@@ -82,7 +25,7 @@ const open = async(a,b,c,d) => {
     nextWhile         = true;
 
     console.log('Open instagram');
-    wrapCard.insertAdjacentHTML('beforeend', templateAccountCard([c]));
+
 
 
     await page.goto('https://instagram.com');
@@ -112,6 +55,8 @@ const open = async(a,b,c,d) => {
         let elHandle               = await page.$x('//*[@id="react-root"]/section/main/div/header/section/ul/li[1]/span');
         let lamudiNewPropertyCount = await page.evaluate(el => el.textContent, elHandle[0]); //cantidad de registros
 
+        document.querySelector(`#${arAccounts[index]}-posts`).innerText = lamudiNewPropertyCount;
+
         while (nextWhile) {
             await page.evaluate(() => {
                 document.querySelector('.DINPA').scrollIntoView();
@@ -137,7 +82,7 @@ const open = async(a,b,c,d) => {
         let dir = d + '/' + arAccounts[index] + '/';
         console.log(dir);
         jsPackTools.validateDir(dir);
-
+        console.log(getImgSrcAttr);
         getImgSrcAttr[index].map(async (imgUrl, i) => {
             return await fetch(imgUrl, opts)
                 .then(res => res.arrayBuffer())
