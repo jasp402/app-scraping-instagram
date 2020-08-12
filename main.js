@@ -16,7 +16,7 @@ let mainWindow
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 1400, height: 768, frame:false})
+  mainWindow = new BrowserWindow({width: 1400, height: 768})
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
@@ -27,7 +27,7 @@ function createWindow () {
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools()
-
+  mainWindow.setMenu(null);
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
     // Dereference the window object, usually you would store windows
