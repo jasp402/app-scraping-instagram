@@ -12,8 +12,8 @@ Array.prototype.unique=function(a){
 
 const open = async(a,b,c,d) => {
     const browser = await puppeteer.launch({
-        timeout : 120 * 1000,
-        headless: true
+        timeout : 999 * 1000,
+        headless: false
     });
 
     const page        = (await browser.pages())[0];
@@ -22,45 +22,56 @@ const open = async(a,b,c,d) => {
     let currentCord;    //Cordenadas actual
 
     let account       = 'p._zaragoza';
-    nextWhile         = true;
+    let nextWhile     = true;
 
-    console.log('Open instagram');
-
-
+    console.log('Open browser');
 
     await page.goto('https://instagram.com');
+
+    await page.screenshot({path: `${__dirname}/screenshot/${new Date().getTime()}_buddy-screenshot.png`});
+
+    console.log('go to instagram')
 
     await page.waitFor('input[name="username"]');
     await page.focus('input[name="username"]');
     await page.keyboard.type('@' + a);
 
+    console.log('set username', a);
+
     await page.waitFor('input[name="password"]');
     await page.focus('input[name="password"]');
     await page.keyboard.type(b);
 
+    console.log('set password', b)
+
     const submit = await page.$('button[type="submit"]');
     await submit.click();
 
+    console.log('submit')
 
     let arAccounts = c.split(',');
-    console.log('arAccounts', arAccounts);
+
+    console.log('array to accounts', arAccounts);
+
+
     for(let index=0;index<arAccounts.length; ++index){
         let getImgSrcAttr = [];
         console.log('entro en el for');
         console.log('arAccounts', arAccounts[index]);
         await page.waitFor(4000);
         await page.goto('https://www.instagram.com/' + arAccounts[index] + '/');
+        await page.screenshot({path: `${__dirname}/screenshot/${new Date().getTime()}_buddy-screenshot.png`});
         await page.waitFor('.DINPA');
 
         let elHandle               = await page.$x('//*[@id="react-root"]/section/main/div/header/section/ul/li[1]/span');
         let lamudiNewPropertyCount = await page.evaluate(el => el.textContent, elHandle[0]); //cantidad de registros
 
-        document.querySelector(`#${arAccounts[index]}-posts`).innerText = lamudiNewPropertyCount;
+        document.querySelector(`#${String(arAccounts[index]).replace(/\./g,'_')}-posts`).innerText = lamudiNewPropertyCount;
 
         while (nextWhile) {
+            console.log('entra en el While');
             await page.evaluate(() => {
                 document.querySelector('.DINPA').scrollIntoView();
-
             });
             await page.waitFor(4000);
             console.log(flatArray(getImgSrcAttr).unique().length, '==', lamudiNewPropertyCount.split(' ')[0]);
@@ -71,6 +82,7 @@ const open = async(a,b,c,d) => {
             }
         }
 
+        console.table(getImgSrcAttr);
         const arrayCookies = await page.cookies();
         const cookie = arrayCookies.map(x => x.name + '=' + x.value).join(';');
         const opts = {
@@ -92,6 +104,7 @@ const open = async(a,b,c,d) => {
                 })
                 .catch(console.error);
         });
+        nextWhile = true;
     }
 
 

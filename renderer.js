@@ -26,7 +26,7 @@ const templateAccountCard = (...arg) => `<div
                     <div
                             class="mr-16 flex flex-col capitalize text-gray-600dark:text-gray-400">
                         <span>Posts</span>
-                        <span class="mt-2 text-black dark:text-gray-200" id="${arg[0]}-posts">0</span>
+                        <span class="mt-2 text-black dark:text-gray-200" id="${String(arg[0]).replace(/\./g,'_')}-posts">0</span>
                     </div>
 
                     <div
