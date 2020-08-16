@@ -17,6 +17,7 @@ const open = async(a,b,c,d) => {
     });
 
     const page        = (await browser.pages())[0];
+    await page.setDefaultNavigationTimeout(0);
     const flatArray   = arr => [].concat(...arr);
     let cord;           //coordenadas inicial
     let currentCord;    //Cordenadas actual
@@ -68,21 +69,48 @@ const open = async(a,b,c,d) => {
 
         document.querySelector(`#${String(arAccounts[index]).replace(/\./g,'_')}-posts`).innerText = lamudiNewPropertyCount;
 
-        while (nextWhile) {
-            console.log('entra en el While');
-            await page.evaluate(() => {
-                document.querySelector('.DINPA').scrollIntoView();
-            });
-            await page.waitFor(4000);
-            console.log(flatArray(getImgSrcAttr).unique().length, '==', lamudiNewPropertyCount.split(' ')[0]);
-            if (flatArray(getImgSrcAttr).unique().length == lamudiNewPropertyCount.split(' ')[0]) {
-                nextWhile = false;
-            } else {
-                getImgSrcAttr.push(await page.$$eval("article img", el => el.map(x => x.getAttribute("src"))));
+        let firstImage = await page.$('article img');
+        await firstImage.click();
+        await page.waitFor(4000);
+
+        while (nextWhile){
+            try {
+                await page.waitFor(4000);
+                await page.waitFor('body article[role="presentation"]');
+
+                let img = await page.$$eval('article[role="presentation"] img', el => el.map(x =>{
+                    let atr = x.getAttribute("src");
+
+                    return /_nc_cat/g.test(atr) ? atr : false;
+                }).filter(Boolean));
+
+                let video = await page.$$eval('article[role="presentation"] video', el => el.map(x => x.getAttribute("src")));
+
+                // let [elementHandle] = await page.$x('/html/body/div[4]/div[2]/div/article/div[2]/div/div/div[1]/img/@src');
+                // await page.waitFor(4000);
+                // const propertyHandle = await elementHandle.getProperty('value');
+                // const propertyValue = await propertyHandle.jsonValue();
+                console.log(img);
+                console.log(video);
+
+                getImgSrcAttr.push(img);
+                getImgSrcAttr.push(video);
+
+                let arrowRight = await page.waitForSelector('.coreSpriteRightPaginationArrow');
+                await arrowRight.click();
+                console.log(page.url());
+
             }
+            catch (error) {
+                nextWhile = false;
+                console.log("Catch Error:", error)
+            }
+
+
         }
 
-        console.table(getImgSrcAttr);
+        console.log(getImgSrcAttr);
+        let getImgSrc = flatArray(getImgSrcAttr);
         const arrayCookies = await page.cookies();
         const cookie = arrayCookies.map(x => x.name + '=' + x.value).join(';');
         const opts = {
@@ -94,13 +122,14 @@ const open = async(a,b,c,d) => {
         let dir = d + '/' + arAccounts[index] + '/';
         console.log(dir);
         jsPackTools.validateDir(dir);
-        console.log(getImgSrcAttr);
-        getImgSrcAttr[index].map(async (imgUrl, i) => {
+        console.log(getImgSrc);
+        getImgSrc.map(async (imgUrl, i) => {
+            let ext = /mp4/g.test(imgUrl) ? '.mp4' : '.jpg';
             return await fetch(imgUrl, opts)
                 .then(res => res.arrayBuffer())
                 .then(response => {
                     console.log('---save');
-                    fs.writeFileSync(dir + i + '.jpg', Buffer.from(response));
+                    fs.writeFileSync(dir + i + ext, Buffer.from(response));
                 })
                 .catch(console.error);
         });
