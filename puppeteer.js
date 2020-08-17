@@ -2,10 +2,6 @@ const puppeteer = require('puppeteer');
 const jsPackTools = require('js-packtools')();
 const fs   = require('fs');
 
-//arg[0] - account name
-
-
-
 Array.prototype.unique=function(a){
     return function(){return this.filter(a)}}(function(a,b,c){return c.indexOf(a,b+1)<0
 });
@@ -86,10 +82,6 @@ const open = async(a,b,c,d) => {
 
                 let video = await page.$$eval('article[role="presentation"] video', el => el.map(x => x.getAttribute("src")));
 
-                // let [elementHandle] = await page.$x('/html/body/div[4]/div[2]/div/article/div[2]/div/div/div[1]/img/@src');
-                // await page.waitFor(4000);
-                // const propertyHandle = await elementHandle.getProperty('value');
-                // const propertyValue = await propertyHandle.jsonValue();
                 console.log(img);
                 console.log(video);
 
@@ -136,113 +128,8 @@ const open = async(a,b,c,d) => {
         nextWhile = true;
     }
 
-
-
-
-
-
-    /*
-    while (nextWhile) {
-
-        cord = await page.evaluate((header) => {
-            const {x, y} = header.getBoundingClientRect();
-            return {x, y};
-        }, header);
-        await page.waitFor(4000);
-
-
-        await page.evaluate(() => {
-            document.querySelector('.DINPA').scrollIntoView();
-
-            window.addEventListener("scroll", function (event) {
-                var scroll = this.scrollY;
-                console.log(scroll)
-            });
-
-        });
-
-        await page.waitFor(4000);
-
-        currentCord = await page.evaluate((header) => {
-            const {x, y} = header.getBoundingClientRect();
-            return {x, y};
-        }, header);
-
-        console.log(cord, currentCord);
-
-
-
-        if (currentCord !== undefined && currentCord.y === cord.y) {
-            nextWhile = false;
-        } else {
-            getImgSrcAttr.push(await page.$$eval("article img", el => el.map(x => x.getAttribute("src"))));
-        }
-        console.log(flatArray(getImgSrcAttr).length)
-    }
-*/
-
-
-
-
 };
 
-/*
-function extractImages(account) {
-
-    let item        = $('.DINPA');
-    const DIV_POST  = '//*[@id="react-root"]/section/main/div/header/section/ul/li[1]/span';
-    let post        = $(DIV_POST).getText();
-
-    u.logExecution(post);
-
-
-    // browser.waitUntil(function () {
-    // }, 600000, 'error nuca llega ha ser igual durante 60 seg.');
-    let withfot = true;
-    while(withfot){
-        cord = browser.getElementLocation(item.ELEMENT);
-        item.scrollIntoView();
-
-        browser.pause(4000);
-
-
-        currentCord = browser.getElementLocation(item.ELEMENT);
-        if (currentCord !== undefined && currentCord.y === cord.y) {
-            withfot = false;
-        }else{
-            $$('article img').forEach(img => {
-                //browser.pause(1000);
-                getImgSrcAttr.push(img.getAttribute('src'));
-            });
-        }
-    }
-
-    getImgSrcAttr = _.uniq(_.flattenDeep(getImgSrcAttr));
-    u.logExecution(getImgSrcAttr.length+' Descargado');
-    //u.logExecution(JSON.stringify(getImgSrcAttr));
-    //console.log(JSON.stringify(getImgSrcAttr));
-
-
-
-    let COOKIES = browser.getCookies();
-    let arrayCookies = [];
-    COOKIES.forEach(function (cookie) {
-        arrayCookies.push(cookie.name + '=' + cookie.value);
-    });
-    arrayCookies = arrayCookies.join(';');
-    getImgSrcAttr.forEach((imgUrl, index) => {
-        let res = request('GET', imgUrl, {
-            'headers': {
-                'Cookie': arrayCookies
-            }
-        });
-        dir = __dirname + '/images/' + account + '/';
-        u.validateDir(dir);
-        fs.writeFileSync(dir + index + '.jpg', res.getBody());
-        //compressing.gzip.compressFile(dir, __dirname + '/images/account.zip')
-    });
-}
-*/
 module.exports = { open };
 
 
