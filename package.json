@@ -18,7 +18,7 @@
     "electron-packager": "12.1.0"
   },
   "dependencies": {
-    "js-packtools": "^2.3.15",
+    "js-packtools": "^2.3.18",
     "puppeteer": "1.0.0",
     "request": "latest",
     "sync-request": "6.1.0"
