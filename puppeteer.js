@@ -1,25 +1,15 @@
 const puppeteer = require('puppeteer');
 const jsPackTools = require('js-packtools')();
 const fs   = require('fs');
-
-Array.prototype.unique=function(a){
-    return function(){return this.filter(a)}}(function(a,b,c){return c.indexOf(a,b+1)<0
-});
-
 const open = async(a,b,c,d) => {
     const browser = await puppeteer.launch({
         timeout : 999 * 1000,
-        headless: false
+        headless: true
     });
-
-    const page        = (await browser.pages())[0];
+    const page    = (await browser.pages())[0];
     await page.setDefaultNavigationTimeout(0);
-    const flatArray   = arr => [].concat(...arr);
-    let cord;           //coordenadas inicial
-    let currentCord;    //Cordenadas actual
-
-    let account       = 'p._zaragoza';
-    let nextWhile     = true;
+    const flatArray = arr => [].concat(...arr);
+    let nextWhile   = true;
 
     console.log('Open browser');
 
@@ -27,7 +17,7 @@ const open = async(a,b,c,d) => {
 
     await page.screenshot({path: `${__dirname}/screenshot/${new Date().getTime()}_buddy-screenshot.png`});
 
-    console.log('go to instagram')
+    console.log('go to instagram');
 
     await page.waitFor('input[name="username"]');
     await page.focus('input[name="username"]');
@@ -39,12 +29,12 @@ const open = async(a,b,c,d) => {
     await page.focus('input[name="password"]');
     await page.keyboard.type(b);
 
-    console.log('set password', b)
+    console.log('set password', b);
 
     const submit = await page.$('button[type="submit"]');
     await submit.click();
 
-    console.log('submit')
+    console.log('submit');
 
     let arAccounts = c.split(',');
 
@@ -53,7 +43,6 @@ const open = async(a,b,c,d) => {
 
     for(let index=0;index<arAccounts.length; ++index){
         let getImgSrcAttr = [];
-        console.log('entro en el for');
         console.log('arAccounts', arAccounts[index]);
         await page.waitFor(4000);
         await page.goto('https://www.instagram.com/' + arAccounts[index] + '/');
