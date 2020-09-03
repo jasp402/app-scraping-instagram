@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "js-packtools": "^2.3.18",
-    "puppeteer": "1.0.0",
+    "puppeteer": "5.2.1",
     "request": "latest",
     "sync-request": "6.1.0"
   }
